@@ -34,7 +34,7 @@ npm install
 3. Create a `.env` file in `backend/` with your MongoDB connection string:
 
 ```env
-MONGODB_URI=mongodb://localhost:27017/task-manager
+MONGODB_URI=mongodb+srv://paryag_db:Paryag123@cluster0.qducpfn.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0
 PORT=5000
 ```
 
