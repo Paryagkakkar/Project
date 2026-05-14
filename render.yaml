@@ -1,0 +1,21 @@
+services:
+  - type: web
+    name: task-manager-backend
+    env: node
+    region: oregon
+    branch: main
+    buildCommand: cd backend && npm install
+    startCommand: cd backend && npm start
+    envVars:
+      - key: NODE_ENV
+        value: production
+
+  - type: static_site
+    name: task-manager-frontend
+    region: oregon
+    branch: main
+    buildCommand: cd frontend && npm install && npm run build
+    publishPath: frontend/build
+    envVars:
+      - key: REACT_APP_API_URL
+        value: https://task-manager-backend.onrender.com/api
