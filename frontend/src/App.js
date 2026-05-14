@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import api from './api';
 import TaskForm from './components/TaskForm';
 import TaskList from './components/TaskList';
-import './App.css';
 
 function App() {
   const [tasks, setTasks] = useState([]);
@@ -73,16 +72,16 @@ function App() {
   };
 
   return (
-    <div className="app-shell">
-      <header className="topbar">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-100 text-gray-900 font-sans">
+      <header className="bg-indigo-600 text-white py-8 px-8 text-center shadow-lg">
         <div>
-          <h1>Task Manager</h1>
-          <p>Built with React, Express, MongoDB and REST API</p>
+          <h1 className="text-3xl md:text-5xl font-bold mb-2">Task Manager</h1>
+          <p className="text-lg opacity-90">Built with React, Express, MongoDB and REST API</p>
         </div>
       </header>
 
-      <main>
-        <section className="form-panel">
+      <main className="max-w-6xl mx-auto py-8 px-6 space-y-6">
+        <section className="bg-white bg-opacity-95 rounded-3xl shadow-xl p-6">
           <TaskForm
             onSubmit={selectedTask ? (data) => updateTask(selectedTask._id, data) : addTask}
             task={selectedTask}
@@ -90,10 +89,10 @@ function App() {
           />
         </section>
 
-        <section className="list-panel">
-          {error && <div className="notice error">{error}</div>}
+        <section className="bg-white bg-opacity-95 rounded-3xl shadow-xl p-6">
+          {error && <div className="mb-4 p-4 bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 rounded-lg">{error}</div>}
           {loading ? (
-            <div className="notice">Loading tasks...</div>
+            <div className="text-center py-8">Loading tasks...</div>
           ) : (
             <TaskList
               tasks={tasks}

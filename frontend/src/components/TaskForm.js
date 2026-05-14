@@ -38,57 +38,65 @@ function TaskForm({ onSubmit, task, onCancel }) {
   };
 
   return (
-    <div className="task-form-card">
-      <h2>{task ? 'Edit Task' : 'Add New Task'}</h2>
-      <form onSubmit={handleSubmit}>
-        <label>
-          Task title
+    <div className="max-w-md mx-auto">
+      <h2 className="text-2xl font-bold mb-4">{task ? 'Edit Task' : 'Add New Task'}</h2>
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Task title</label>
           <input
             name="title"
             value={values.title}
             onChange={handleChange}
             placeholder="Add a title"
             required
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
           />
-        </label>
+        </div>
 
-        <label>
-          Description
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-1">Description</label>
           <textarea
             name="description"
             value={values.description}
             onChange={handleChange}
             placeholder="Describe the task"
+            className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500 min-h-[100px] resize-vertical"
           />
-        </label>
+        </div>
 
-        <div className="grid-row">
-          <label>
-            Status
-            <select name="status" value={values.status} onChange={handleChange}>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Status</label>
+            <select
+              name="status"
+              value={values.status}
+              onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+            >
               <option value="pending">Pending</option>
               <option value="in progress">In Progress</option>
               <option value="completed">Completed</option>
             </select>
-          </label>
+          </div>
 
-          <label>
-            Due date
+          <div>
+            <label className="block text-sm font-medium text-gray-700 mb-1">Due date</label>
             <input
               type="date"
               name="dueDate"
               value={values.dueDate}
               onChange={handleChange}
+              className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
             />
-          </label>
+          </div>
         </div>
 
-        <div className="button-row">
-          <button type="submit" className="primary">
+        <div className="flex gap-3 flex-wrap">
+          <button type="submit" className="bg-indigo-600 text-white px-5 py-2 rounded-full hover:bg-indigo-700 transition-transform hover:scale-105">
             {task ? 'Save changes' : 'Create task'}
           </button>
           {task && (
-            <button type="button" onClick={onCancel} className="secondary">
+            <button type="button" onClick={onCancel} className="bg-gray-200 text-gray-900 px-5 py-2 rounded-full hover:bg-gray-300 transition-transform hover:scale-105">
               Cancel
             </button>
           )}
